@@ -5,14 +5,15 @@
   "//": "put your npm scripts here",
   "scripts": {
     "//": "By convention, a prestart script will run before the start script",
-    "prestart": "node buildScripts/startMessage.js",
+    "prestart": "babel-node buildScripts/startMessage.js",
+    "//": "now babel will transpile the startMessage.js code before passing it on to node",
 
     "//": "Start our development environment",
     "start": "npm-run-all --parallel security-check open:src",
     "//":  "now you can just type 'npm start'",
     "//":  "Side remark: 'start' is a convention in node, so you can just type 'npm start' instead of 'npm run start'",
 
-    "open:src": "node buildScripts/srcServer.js",
+    "open:src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000 --subdomain mmpluralsightjsdevenv",
     "share": "npm-run-all --parallel open:src localtunnel"

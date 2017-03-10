@@ -1,10 +1,10 @@
 // set up a webserver that serves our files in our source directory
-var express = require('express');
-var path = require('path');
-var open = require('open'); // to open the site in the browser
+import express from  'express';
+import path from  'path';
+import open from  'open'; // to open the site in the browser
 
-var port = 3000;
-var app = express();
+const port = 3000;
+const app = express();
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));
