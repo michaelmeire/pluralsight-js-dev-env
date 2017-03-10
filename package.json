@@ -8,12 +8,14 @@
     "prestart": "node buildScripts/startMessage.js",
 
     "//": "Start our development environment",
-    "start": "node buildScripts/srcServer.js",
+    "start": "npm-run-all --parallel security-check open:src",
     "//":  "now you can just type 'npm start'",
     "//":  "Side remark: 'start' is a convention in node, so you can just type 'npm start' instead of 'npm run start'",
 
+    "open:src": "node buildScripts/srcServer.js",
     "security-check": "nsp check",
-    "share": "lt --port 3000"
+    "localtunnel": "lt --port 3000 --subdomain mmpluralsightjsdevenv",
+    "share": "npm-run-all --parallel open:src localtunnel"
 
   },
   "author": "Michael",
