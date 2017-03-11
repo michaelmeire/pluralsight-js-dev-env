@@ -2,7 +2,7 @@ import path from 'path';
 
 export default {
   debug: true,
-  devtool: 'inline-source-map', // the different options make a tradeoff between compilation speed versus quality source maps
+  devtool: 'inline-source-map', // the different options make a tradeoff between compilation speed versus quality source maps, see http://webpack.github.io/docs/configuration.html#devtool
   noInfo: false,
   entry: [ // the entry points of the application. This is also the place to inject middleware for hot reloading
     path.resolve(__dirname, 'src/index')

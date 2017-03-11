@@ -1,0 +1,23 @@
+{
+  // to make sure eslint does not check parent directories for configuration
+  "root": true,
+  "extends": [
+    // use eslint's recommended rules
+    "eslint:recommended",
+    // add plugin's for enhanced linting of es6 imports
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-console": 1
+  }
+}

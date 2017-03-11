@@ -9,14 +9,18 @@
     "//": "now babel will transpile the startMessage.js code before passing it on to node",
 
     "//": "Start our development environment",
-    "start": "npm-run-all --parallel security-check open:src",
+    "start": "npm-run-all --parallel security-check open:src lint:watch",
     "//":  "now you can just type 'npm start'",
     "//":  "Side remark: 'start' is a convention in node, so you can just type 'npm start' instead of 'npm run start'",
 
     "open:src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000 --subdomain mmpluralsightjsdevenv",
-    "share": "npm-run-all --parallel open:src localtunnel"
+    "share": "npm-run-all --parallel open:src localtunnel",
+
+    "//": "esw = es-lint-watch, for enhanced output and file-watching",
+    "lint": "esw webpac.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch"
 
   },
   "author": "Michael",
