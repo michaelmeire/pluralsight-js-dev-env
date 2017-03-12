@@ -9,7 +9,7 @@
     "//": "now babel will transpile the startMessage.js code before passing it on to node",
 
     "//": "Start our development environment",
-    "start": "npm-run-all --parallel security-check open:src lint:watch",
+    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch",
     "//":  "now you can just type 'npm start'",
     "//":  "Side remark: 'start' is a convention in node, so you can just type 'npm start' instead of 'npm run start'",
 
@@ -20,8 +20,10 @@
 
     "//": "esw = es-lint-watch, for enhanced output and file-watching",
     "lint": "esw webpac.config.* src buildScripts --color",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
 
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Michael",
   "license": "MIT",
