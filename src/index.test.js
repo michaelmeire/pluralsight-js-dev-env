@@ -10,12 +10,12 @@ describe('Our first test', () => {
 
 
 describe('index.html', () => {
-  it('should say hello', (done) => {
+  it('should have h1 that says Users', (done) => {
     const index = fs.readFileSync('./src/index.html', "utf-8");
     jsdom.env(index, function (err, window) { // the callback function is run after jsdom has pulled index.html as virtual dom into memory
       // window represents the window in the browser
       const h1 = window.document.getElementsByTagName('h1')[0];
-      expect(h1.innerHTML).to.equal("Hi there!");
+      expect(h1.innerHTML).to.equal("Users");
       // When we call jsdom, there is an asynchronous call because we pass in the function(err,window)
       // We have to setup our test to be asynchronous.
       // To do that, when we call it, we pass in the done,

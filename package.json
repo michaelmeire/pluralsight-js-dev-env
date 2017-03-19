@@ -9,9 +9,9 @@
     "//": "now babel will transpile the startMessage.js code before passing it on to node",
 
     "//": "Start our development environment",
-    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch",
-    "//":  "now you can just type 'npm start'",
-    "//":  "Side remark: 'start' is a convention in node, so you can just type 'npm start' instead of 'npm run start'",
+    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch start-mockapi",
+    "//": "now you can just type 'npm start'",
+    "//": "Side remark: 'start' is a convention in node, so you can just type 'npm start' instead of 'npm run start'",
 
     "open:src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
@@ -23,11 +23,19 @@
     "lint:watch": "npm run lint -- --watch",
 
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+
+    "generate-mock-data": "babel-node buildScripts/generateMockData",
+    "//": "we use babel-node because we wrote it in ES6, just to make sure that node can parse it",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
+
+
   },
   "author": "Michael",
   "license": "MIT",
   "dependencies": {
+    "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
